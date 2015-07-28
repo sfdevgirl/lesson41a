@@ -4,20 +4,10 @@ $(function(){
     var searchTerm = $('#query').val();
     getRequest(searchTerm);
   });
-  $.get("https://www.googleapis.com/youtube/v3/search", { api_key: "AIzaSyCNHy4CD-Qdd_VUTQ2kh-0X_-3GyIYDCEc", part: "snippet", q: "coding" }, 
-    function(data){
-      console.log(data);
-    });
 });
 
 function getRequest(searchTerm){
-  var params = {
-    s: searchTerm,
-    r: 'json'
-  };
-  url = 'http://www.omdbapi.com';
-
-  $.getJSON(url, params, function(data){
+  $.getJSON('http://www.omdbapi.com/?s=' + searchTerm + '&r=json', function(data){
     showResults(data.Search);
   });
 }
